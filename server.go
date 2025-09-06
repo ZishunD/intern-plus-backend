@@ -40,7 +40,7 @@ func main() {
 	})
 
 	c := cors.New(cors.Options{
-		AllowedOrigins:   []string{"http://localhost:3000"}, // 允许前端
+		AllowedOrigins:   []string{"https://intern-plus-frontend.onrender.com"}, // 允许前端
 		AllowCredentials: true,
 		AllowedMethods:   []string{"POST", "GET", "OPTIONS"},
 		AllowedHeaders:   []string{"*"},

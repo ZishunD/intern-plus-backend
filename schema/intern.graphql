@@ -1,0 +1,37 @@
+type Intern {
+  id: ID!
+  first_name: String!
+  last_name: String!
+  phone_number: String
+  email: String!
+  password: String!
+  provider_id: String
+  provider: String
+  avatar_url: String
+  status: String
+  application_id: Int
+  remember_token: String
+  created_at: String
+  updated_at: String
+}
+
+input NewInternInput {
+  first_name: String!
+  last_name: String!
+  phone_number: String
+  email: String!
+  password: String!
+  provider_id: String
+  provider: String
+  avatar_url: String
+  application_id: Int
+}
+
+type Query {
+  getInterns: [Intern]
+}
+
+type Mutation {
+  createIntern(input: NewInternInput!): Intern
+  loginIntern(email: String!, password: String!): String
+}

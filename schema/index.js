@@ -2,6 +2,9 @@ import fs from "fs";
 import path from "path";
 
 const __dirname = path.resolve();
-const userSchema = fs.readFileSync(path.join(__dirname, "schema/intern.graphql"), "utf-8");
+const internSchema = fs.readFileSync(path.join(__dirname, "schema/intern.graphql"), "utf-8");
+const programSchema = fs.readFileSync(path.join(__dirname, "schema/program.graphql"), "utf-8");
 
-export default userSchema;
+const schema = [internSchema, programSchema].join("\n");
+
+export default schema;

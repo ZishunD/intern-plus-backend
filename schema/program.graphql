@@ -1,0 +1,42 @@
+type InternProgram {
+  id: Int!
+  hr_account_id: Int!
+  title: String!
+  description: String
+  location: String
+  open_date: String
+  close_date: String
+  total_positions: Int
+  category: String
+  status: String
+  created_at: String
+  updated_at: String
+}
+
+type CategorySum {
+  category: String!
+  sum: Int!
+}
+
+input NewInternProgramInput {
+  hr_account_id: ID!
+  title: String!
+  description: String
+  category: String
+  total_positions: Int
+}
+
+input InternProgramFilter {
+  category: String
+}
+
+type Query {
+  programSum: Int
+  positionSum: Int
+  categorySum: [CategorySum!]!
+  internPrograms(filter: InternProgramFilter): [InternProgram!]!
+}
+
+type Mutation {
+  createInternProgram(input: NewInternProgramInput!): InternProgram
+}

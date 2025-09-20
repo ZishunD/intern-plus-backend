@@ -73,12 +73,14 @@ async function runMigrations() {
 // connect database and run migration
 (async () => {
     try {
+        console.log(process.env.DB_HOST);
         const conn = await pool.getConnection();
         console.log("✅ MySQL connected!");
         conn.release();
 
         await runMigrations(); // 自动迁移
     } catch (err) {
+        console.log(process.env.DB_HOST);
         console.error("❌ DB Connection Error:", err.message);
     }
 })();

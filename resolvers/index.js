@@ -1,5 +1,6 @@
 import { internResolvers } from "./internResolvers.js";
 import { internProgramResolvers } from "./programResolvers.js";
+import { applyResolvers } from "./applyResolvers.js";
 
 export default {
     Query: {
@@ -8,7 +9,7 @@ export default {
     },
     Mutation: {
         ...internResolvers.Mutation, // 合并所有 Mutation 解析器
-        ...internProgramResolvers.Mutation
+        ...internProgramResolvers.Mutation,
         ...applyResolvers.Mutation
     },
 };

@@ -9,5 +9,6 @@ export default {
     Mutation: {
         ...internResolvers.Mutation, // 合并所有 Mutation 解析器
         ...internProgramResolvers.Mutation
+        ...applyResolvers.Mutation
     },
 };

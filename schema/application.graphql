@@ -1,0 +1,22 @@
+scalar Upload
+
+input ApplyInput {
+  fname: String!
+  lname: String!
+  email: String!
+  phone: String!
+  startDate: String!
+  endDate: String!
+  internshipType: String!
+  resumeFile: Upload
+  portfolioFile: Upload
+  program_id: ID!
+}
+
+type Application {
+  application_id: String
+}
+
+type Mutation {
+  applyInternship(input: ApplyInput!): Application
+}

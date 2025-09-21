@@ -8,7 +8,10 @@ import cors from "cors";
 const app = express();
 
 app.use(cors({
-    origin: "http://localhost:3000", // 前端地址
+    origin: [
+        "http://localhost:3000",
+        "https://intern-plus-frontend.onrender.com"
+    ], // 前端地址
     credentials: true,
 }));
 

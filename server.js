@@ -20,7 +20,10 @@ const server = new ApolloServer({ typeDefs, resolvers });
 await server.start();
 server.applyMiddleware({
     app, cors: {
-        origin: "http://localhost:3000, https://intern-plus-frontend.onrender.com", // 前端地址
+        origin: [
+            "http://localhost:3000",
+            "https://intern-plus-frontend.onrender.com"
+        ], // 前端地址
         credentials: true,
     }
 });

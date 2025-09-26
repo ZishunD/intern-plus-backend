@@ -31,6 +31,8 @@ input InternProgramFilter {
 }
 
 type Query {
+  program(id: ID!): InternProgram
+  programs(key: String!): [InternProgram!]!
   programSum: Int
   positionSum: Int
   categorySum: [CategorySum!]!

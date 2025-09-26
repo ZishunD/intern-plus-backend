@@ -2,6 +2,36 @@ import pool from "../utils/db.js";
 
 export const internProgramResolvers = {
     Query: {
+        program: async (_, { id }) => {
+            const sql = `
+        SELECT id, hr_account_id, title, description, location, open_date, close_date, total_positions, category, status, created_at, updated_at
+        FROM intern_programs
+        WHERE id = ?
+      `;
+
+            const [rows] = await pool.query(sql, [id]);
+
+            if (rows.length === 0) return null; // no program found
+
+            return rows[0];
+        },
+        // 搜索实习项目
+        programs: async (_, { key }) => {
+            let sql = `
+                SELECT id, hr_account_id, title, description, location, open_date, close_date, total_positions, category, status, created_at, updated_at
+                FROM intern_programs
+            `;
+            const params = [];
+
+            if (key) {
+                sql += ` WHERE title LIKE ? OR description LIKE ?`;
+                params.push(`%${key}%`, `%${key}%`);
+            }
+
+            const [rows] = await pool.query(sql, params);
+            return rows;
+        },
+
         // 获取所有实习项目，可选过滤 category
         internPrograms: async (_, { filter }) => {
             let sql = `

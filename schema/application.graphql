@@ -1,4 +1,5 @@
 scalar Upload
+scalar Date
 
 input ApplyInput {
   fname: String!
@@ -14,9 +15,19 @@ input ApplyInput {
 }
 
 type Application {
+  status: String
+  title: String
+  location: String
+  start_date: String
+  end_date: String
   application_id: String
+  internship_type: String
 }
 
 type Mutation {
   applyInternship(input: ApplyInput!): Application
+}
+
+type Query {
+  getApplicationById(application_id: String!): Application
 }

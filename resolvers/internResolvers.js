@@ -31,8 +31,8 @@ export const internResolvers = {
             // 插入数据库
             const [result] = await pool.query(
                 `INSERT INTO interns 
-         (first_name, last_name, phone_number, email, password, provider_id, provider, avatar_url, application_id, status, created_at, updated_at) 
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 0, NOW(), NOW())`,
+         (first_name, last_name, phone_number, email, password, provider_id, provider, avatar_url, status, created_at, updated_at) 
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, "guest", NOW(), NOW())`,
                 [first_name, last_name, phone_number, email, hashedPassword, provider_id, provider, avatar_url, application_id]
             );
 

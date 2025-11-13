@@ -24,10 +24,23 @@ type Application {
   internship_type: String
 }
 
+type ApplicationInformation {
+  application_id: String
+  fname: String
+  lname: String
+  email: String
+  phone_number: String
+  internship_type: String
+  status: String
+  title: String
+  task_status: String
+}
+
 type Mutation {
   applyInternship(input: ApplyInput!): Application
 }
 
 type Query {
   getApplicationById(application_id: String!): Application
+  getApplicationInformationById(application_id: String!): ApplicationInformation
 }

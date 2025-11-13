@@ -111,6 +111,20 @@ export const applyResolvers = {
                 [intern_id, startDate, endDate, internshipType, resumeUrl, portfolioUrl, program_id, application_id]
             );
 
+            const id = result.insertId;
+
+            await pool.query(
+                `INSERT INTO application_tasks
+        (application_id, task_name, due_date, status, created_at, updated_at)
+        VALUES (?, ?, ?, ?, NOW(), NOW())`,
+                [id, "pending", endDate, "pending"]
+            );
+
+            await pool.query(
+                `UPDATE interns SET status = 'pending', updated_at = NOW() WHERE email = ?`,
+                [email]
+            );
+
             return { application_id };
         },
     },
